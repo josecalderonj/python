@@ -1,0 +1,25 @@
+def calcular_serie(numero):
+    a=0
+    b=1
+    if numero<=0:
+        print("¡Error! Ingrese un número mayor a 0")
+    elif numero==1:
+        serie=[0]
+    elif numero==2:
+        serie=[0,1]
+    else:
+        k=0
+        serie=[0,1]
+        while len(serie)<numero:
+            a=serie[k]
+            b=serie[k+1]
+            x=a+b
+            serie.append(x)
+            k=k+1
+    return serie
+
+terminos=float(input("Ingrese número de términos: "))
+
+serie=calcular_serie(terminos)
+
+print(serie)
