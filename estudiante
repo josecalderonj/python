@@ -1,0 +1,37 @@
+class Persona:
+    def __init__(self,name,age,birth_place,sex):
+        self.nombre=name
+        self.edad=age
+        self.lugar=birth_place
+        self.sexo=sex
+
+    def presentarse(self):
+        mensaje="¡Hola! mi nombre es "+self.nombre+", tengo "+str(self.edad)+" y nací en "+self.lugar+". Soy de sexo "+self.sexo+"."
+        print(mensaje)
+
+
+class Estudiante(Persona):
+    def resumen_notas(self):
+        ka=0 #contador aprobados
+        kd=0 # " desaprobados
+        suma_notas=0 #acumulador
+        n_cursos = len(self.libreta)  # ---> si libreta es atributo propio de la clase Estudiante
+        for x in self.libreta: # Recorre las claves en el diccionario. Funciona igual que un while
+            if self.libreta[x]>=10.5:
+                ka=ka+1
+                print(x+": APROBADO")
+            elif self.libreta[x]<10.5:
+                print(x+": DESAPROBADO")
+                kd=kd+1
+            suma_notas=suma_notas+self.libreta[x] # acumulador suma_notas fuera del if: TODAS LAS NOTAS influyen en el promedio
+
+        promedio=suma_notas/n_cursos
+        print("El promedio ponderado de "+self.nombre+" es: "+str(promedio))
+        print("N° cursos aprobados: "+str(ka)+"\nN° cursos desaprobados: "+str(kd))
+
+jose=Estudiante("José Manuel",27,"Trujillo, Perú","Masculino")
+jose.libreta={"Cálculo III":10,"Física 2":12,"Estática":13,"Geología General":16,"Ingeniería Económica":12,"Mecánica de Fluidos":9,}
+
+jose.presentarse() #Método heredado
+print()
+jose.resumen_notas() #Método propio
